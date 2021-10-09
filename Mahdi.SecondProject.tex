@@ -1,0 +1,188 @@
+\documentclass[12pt, a4]{article}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{graphicx}
+\titleformat{\section}%
+  [hang]% <shape>
+  {\normalfont\bfseries\Large}% <format>
+  {}% <label>
+  {0pt}% <sep>
+  {}% <before code>
+\renewcommand{\thesection}{}% Remove section references...
+\renewcommand{\thesubsection}{\arabic{subsection}}%..
+\title{\begin{center}
+Exploring the relevance of temperature and precipitation in August to fuel Income:\\ Evidence from a large group of farmers
+\end{center}}
+\author{
+\textbf{Mahdi Najafi}\\
+\vspace{3mm}
+Instructor: Asadullah Jawid\\
+\vspace{3mm}
+Division of Science, Technology, and Mathematics, AUAF
+}
+\date{\today}
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\section{Summary}
+
+
+\paragraph{This study is designed to analyze the relationship between Temperature and Precipitation on Fuel income.  The data is consisted of Continuous Numerical Values. In order to analyze data, and interpret it results, different statistical tools has been used. First we will go through each variable to check them individually in Descriptive statistics analysis section. Then we analyze the impact of two variables, namely: Temperature and Precipitation on Fuel consumption. Based on the analysis, the research has found out that there is a negative relationship between temperature in August and fuel usage, and precipitation in August and fuel usage.}
+\section{Methodology}
+\paragraph{The R programming language has been used as a base platform to analyze data. Multiple uni-variate and bi-variate statistical methods has been used for the analysis of data. The statistical methods are as follow: Measure of Central Tendency, Measure of Dispersion, Measure of Distribution, and linear regression model. The data also represented in a visual format using  histogram, box-plot, density plot, and scatter plot.
+}
+\section{Results and discussion}
+
+\subsection{Descriptive Statistical Analysis}
+In these results, each variable is measured by measure of central tendency(mean), measure of dispersion(Std. Deviation, Min, and Max), measure of distribution(Skewness and Kurtosis). You can easily see the differences in the center and spread of the data for fuel, as the mean is too large in compare to temperature in August. Likewise, rainfall in August has a lower mean and less variation than fuel. To determine the normal distribution, skewness and kurtosis has been calculated. From the table 1, it can be observed that, Temperature in August is symmetric as the skewness value is close to zero. The Precipitation in August the skewness value is greater than 0.5 which indicates  it is moderately skewed. For the fuel income observation, from the skewness and kurtosis value, it can be observed that it does not have a normal distribution as the values are not close to zero.
+
+\begin{table}[H]
+\centering
+\caption{\label{tab:table-name}Descriptive Statistics of Numerical Variables}
+\begin{tabular}{rrrrrrr}
+  \hline
+ & Mean & Std. Dev & Min & Max & Skewness & Kurtosis \\ 
+  \hline
+tempAug & 16.53 & 2.48 & 12.48 & 22.54 & 0.02 & -0.90 \\ 
+  rainAug & 3.58 & 4.18 & 0.08 & 12.07 & 0.96 & -0.75 \\ 
+  fuel & 10415.17 & 21681.10 & 0.00 & 420000.00 & 9.44 & 140.04 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+According to figure 1, the data which shows the density frequency of Precipitation in August, it can be observed that we had a good amount of rainfall in the first two days, but for the remaining of month, we had a decline. Also, the data for this month is not symmetric. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{HistogramRain.png}
+\caption{Precipitation in August}
+\end{figure}
+
+According to figure 2, the data which shows the density frequency of Temperature in August, it can be observed that we had a normal distribution of Temperature during the August which means that we do not have any outliers which effects the normal distribution.
+
+\begin{figure}[H]
+
+\includegraphics[width=12cm]{HistogramTemp.png}
+\caption{Temperature in August}
+\end{figure}
+
+According to figure 3, the data which shows the density frequency of Fuel income, it can be observed that we do not have a normal distribution which means that we have many outliers which effects the normal distribution. In the right section, the outliers has been removed and the range is also limited to get a better understanding of the data.
+
+\begin{figure}[H]
+\includegraphics[width=12cm]{HistogramFuel.png}
+\caption{Fuel Income}
+\end{figure}
+
+From the data, it can be observed that only Fuel income has outliers. So, in order to visualize and get a better result the outliers has been removed and the result can be seen in the following box-plots. The left section is the fuel income without outliers.
+
+\begin{figure}[H]
+\includegraphics[width=12cm]{BoxplotFuel.png}
+\caption{Fuel Income}
+\end{figure}
+
+
+
+
+\subsection{Bi-variate Analysis}
+
+In order to understand the relationship between Precipitation in August and Fuel, and the relevance between Temperature and fuel first data has been analyzed by Covariance and correlation. From table 2, we can see that the Covariance value for temperature and fuel is -3891.92 which indicates the relationship is negative. Also, the Covariance value for variables precipitation and fuel is -26057.20 which also indicates a negative relationship. The correlation value for temperature and fuel is -0.07 or which indicates that there is negative seven percent relationship between them. For the precipitation, and fuel, the Correlation value is -0.29 which indicates there is a negative 29 percent relationship. 
+ 
+\begin{table}[H]
+
+\centering
+\caption{\label{tab:table-name} Co-variance and Correlation}
+\begin{tabular}{rrr}
+  \hline
+ & Covariance & Correlation \\ 
+  \hline
+August Temperature and Fuel & -3891.92 & -0.07 \\ 
+ August Precipitation and Fuel & -26057.20 & -0.29 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+The coefficient of determination is a measure used in statistical analysis that assesses how well a model explains and predicts future outcomes. The coefficient of determination, R-squared, is useful because it gives the proportion of the variance (fluctuation) of one variable that is predictable from the other variable. It is a measure that allows us to determine how certain one can be in making predictions from a certain model/graph. 
+According to table 3, R-squared value between temperature and fuel is 0.005233, which indicates half of one percent of fuel can be explained by temperature. Likewise, the value of R-Squared for precipitation and fuel is 0.082504 which indicates that eight percent of fuel can be explained by the precipitation. 
+
+
+
+\begin{table}[H]
+\centering
+\caption{\label{tab:table-name} R-Squared Values}
+\begin{tabular}{rr}
+  \hline
+ & R-Squared \\ 
+  \hline
+Temperature in Aug on Fuel & 0.005233 \\ 
+  Precipitation in Aug on Fuel & 0.082504 \\ 
+   \hline
+\end{tabular}
+
+
+\end{table}
+
+In the following graph, the data has been analyzed and visualize using scatter plot. Scatter plot is used to show the relationship between the variables. This graph illustrates how precipitation effects negatively on the amount of fuel. As the precipitation goes higher, the fuel has a slight decrease. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{scatterplotPrecipitationFuel.png}
+\caption{Relationship between Precipitation and Fuel}
+\end{figure}
+
+According to figure 6, we can see that there is no direct relationship between the rainfall and fuel income usage. From the graph, it can be observed that data points are spread and barely we can claim that temperature has a positive or negative relationship with fuel.  
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{scatterplotTemperatureFuel.png}
+\caption{Relationship between Precipitation and Fuel}
+\end{figure}
+
+
+According to table 4, it can be observed that if the temperature has an increase by one unit, the fuel income will have an decrease by -632.07 AFN.
+% latex table generated in R 3.5.2 by xtable 1.8-4 package
+% Mon Dec 16 14:17:55 2019
+\begin{table}[H]
+\centering
+\caption{ Linear Model Impact of Temperature in August on Fuel Income Summary }
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$)  \\
+  \hline
+(Intercept) & 20865.4416 & 3761.7698 & 5.55 & 0.0000 \\ 
+  Temperature in August & -632.0737 & 225.0083 & -2.81 & 0.0050 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+According to table 5, it can be observed that if the precipitation in August has an increase by one unit, the fuel income will have an decrease by 1488.37 AFN.
+
+% latex table generated in R 3.5.2 by xtable 1.8-4 package
+% Mon Dec 16 14:21:02 2019
+\begin{table}[ht]
+\centering
+\caption{ Linear Model Impact of Precipitation in August on Fuel Income Summary }
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept) & 15746.8505 & 705.7490 & 22.31 & 0.0000 \\ 
+  Precipitation in August & -1488.3732 & 128.1533 & -11.61 & 0.0000 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+  
+
+\section{Conclusion}
+
+In conclusion, through analysis of our variables in results and discussion section we can summarize the results in below sentences.
+Between independent variable rainfall and dependent variable fuel we have an inverse or negative relationship of -29 percent which means if the amount of rainfall increases the fuel usage amount decrease and vice-versa.
+
+Subsequently, based on the regression analysis of Temperature and Fuel variables we have a negative relationship of 7 percent which indicates that if the temperature degree increase the amount of fuel usage will decrease.
+
+
+\end{document}
